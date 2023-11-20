@@ -1,0 +1,100 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:dataForm="clr-namespace:Syncfusion.Maui.DataForm;assembly=Syncfusion.Maui.DataForm"
+             xmlns:local="clr-namespace:CustomEditor"
+             x:Class="CustomEditor.MainPage">
+
+    <Grid Background="White">
+        <Grid.BindingContext>
+            <local:DataFormViewModel/>
+        </Grid.BindingContext>
+
+        <Grid RowDefinitions="Auto,0.85*, Auto, Auto">
+            <dataForm:SfDataForm x:Name="contactForm" Grid.Row="1"
+                                 DataObject="{Binding ContactFormModel}"
+                                 ValidationMode="PropertyChanged"
+                                 AutoGenerateItems="True"
+                                 LayoutType="TextInputLayout"
+                                 GenerateDataFormItem="contactForm_GenerateDataFormItem">
+                <dataForm:SfDataForm.Items>
+                    <dataForm:DataFormCustomItem>
+                        <dataForm:DataFormCustomItem.EditorView>
+                            <Image Source="people_circle16.png" HorizontalOptions="Start"
+                                   HeightRequest="80"
+                                   WidthRequest="80"/>
+                        </dataForm:DataFormCustomItem.EditorView>
+                    </dataForm:DataFormCustomItem>
+                    <dataForm:DataFormGroupItem Name="Name">
+                        <dataForm:DataFormGroupItem.Items>
+                            <dataForm:DataFormTextItem FieldName="Name" ShowLeadingView="True" >
+                                <dataForm:DataFormTextItem.LeadingView>
+                                    <Label Text="F" FontSize="18" TextColor="Gray" FontFamily="InputLayoutIcons" HeightRequest="24" VerticalTextAlignment="End" />
+                                </dataForm:DataFormTextItem.LeadingView>
+                            </dataForm:DataFormTextItem>
+                            <dataForm:DataFormTextItem FieldName="LastName" ShowLeadingView="True">
+                                <dataForm:DataFormTextItem.LeadingView>
+                                    <Label/>
+                                </dataForm:DataFormTextItem.LeadingView>
+                            </dataForm:DataFormTextItem>
+                        </dataForm:DataFormGroupItem.Items>
+                    </dataForm:DataFormGroupItem>
+
+                    <dataForm:DataFormGroupItem Name="Mobile">
+                        <dataForm:DataFormGroupItem.Items>
+                            <dataForm:DataFormMaskedTextItem FieldName="Mobile" Mask="(###) ###-####" Keyboard="Numeric">
+                                <dataForm:DataFormMaskedTextItem.LeadingView>
+                                    <Label Text="E" FontSize="18" TextColor="Gray" FontFamily="InputLayoutIcons" HeightRequest="24" VerticalTextAlignment="End" />
+                                </dataForm:DataFormMaskedTextItem.LeadingView>
+                            </dataForm:DataFormMaskedTextItem>
+                            <dataForm:DataFormMaskedTextItem FieldName="Landline" Mask="+1 ### ###-####" Keyboard="Numeric">
+                                <dataForm:DataFormMaskedTextItem.LeadingView>
+                                    <Label/>
+                                </dataForm:DataFormMaskedTextItem.LeadingView>
+                            </dataForm:DataFormMaskedTextItem>
+                        </dataForm:DataFormGroupItem.Items>
+                    </dataForm:DataFormGroupItem>
+
+                    <dataForm:DataFormGroupItem Name="Address" ColumnCount="2">
+                        <dataForm:DataFormGroupItem.Items>
+                            <dataForm:DataFormMultilineItem FieldName="Address" RowSpan="2">
+                                <dataForm:DataFormMultilineItem.LeadingView>
+                                    <Label Text="C" FontSize="18" TextColor="Gray" FontFamily="InputLayoutIcons" HeightRequest="24" VerticalTextAlignment="End" />
+                                </dataForm:DataFormMultilineItem.LeadingView>
+                            </dataForm:DataFormMultilineItem>
+                            <dataForm:DataFormTextItem FieldName="City" >
+                                <dataForm:DataFormTextItem.LeadingView>
+                                    <Label/>
+                                </dataForm:DataFormTextItem.LeadingView>
+                            </dataForm:DataFormTextItem>
+                            <dataForm:DataFormTextItem FieldName="State">
+                                <dataForm:DataFormTextItem.LeadingView>
+                                    <Label/>
+                                </dataForm:DataFormTextItem.LeadingView>
+                            </dataForm:DataFormTextItem>
+                            <dataForm:DataFormMaskedTextItem FieldName="ZipCode" Mask="#####-####" Keyboard="Numeric"/>
+                        </dataForm:DataFormGroupItem.Items>
+                    </dataForm:DataFormGroupItem>
+
+                    <dataForm:DataFormTextItem FieldName="Email" Keyboard="Email">
+                        <dataForm:DataFormTextItem.LeadingView>
+                            <Label Text="G" FontSize="18" TextColor="Gray" FontFamily="InputLayoutIcons" HeightRequest="24" VerticalTextAlignment="End" />
+                        </dataForm:DataFormTextItem.LeadingView>
+                    </dataForm:DataFormTextItem>
+                </dataForm:SfDataForm.Items>
+            </dataForm:SfDataForm>
+            <Line Grid.Row="2" Background="#F5F5F5" />
+            <Button Text="Save" Grid.Row="3" x:Name="saveButton" 
+                    Background="{StaticResource PrimaryBrush}" 
+                    TextColor="White"
+                    HeightRequest="40"
+                    VerticalOptions="Center"
+                    FontSize="16"
+                    CornerRadius="5"
+                    WidthRequest="200"
+                    Margin="0,0,0,10"
+                    HorizontalOptions="Center" />
+        </Grid>
+
+    </Grid>
+</ContentPage>
