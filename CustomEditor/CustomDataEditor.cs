@@ -29,7 +29,7 @@ namespace CustomEditor
                 var view = new Image()
                 {
                     Source=(dataFormItem.BindingContext as DataFormViewModel).ContactFormModel.ProfileImage,
-                    HorizontalOptions=LayoutOptions.Start,
+                    HorizontalOptions=LayoutOptions.Center,
                     HeightRequest=80,
                     WidthRequest=80
                 };
